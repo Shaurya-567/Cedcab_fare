@@ -178,13 +178,16 @@ include_once 'array_location.php';
   $("#cab_type").on("change", () => {
     let cab = $("#cab_type").val();
     let inp = $("#luggage");
+    let countCheck =0;
     if (cab == "CedMicro") {
       inp.val("");
       inp.prop('disabled', true);
       inp.attr("placeholder", "Luggage Facility not Available !");
+      countCheck++;
     } else {
       inp.prop('disabled', false);
       inp.attr("placeholder", "Enter the Luggage in Kg!");
+      countCheck++;
     }
 
   })
@@ -194,6 +197,8 @@ include_once 'array_location.php';
     let select2 = $('#Drop_loc').val();
     let select3 = $('#cab_type').val();
     let luggage = $("#luggage").val();
+    let intialCount=0;
+    
     if (select1 != 0) {
 
       if (select2 != 0) {
@@ -207,6 +212,7 @@ include_once 'array_location.php';
             luggage: luggage,
             action:"chekck"
           }
+          intialCount++;
           $.ajax({
             type: "post",
             url: "helper.php",
